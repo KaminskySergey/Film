@@ -1,4 +1,8 @@
 @import-normalize; /* bring in normalize.css styles */
+* {
+  box-sizing: border-box;
+}
+
 
 body {
   margin: 0;
@@ -7,9 +11,171 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+html {
+  height: 100%;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  
+}
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+p{
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  display: block;
+  width: 100%;
+}
+
+body {
+  /* background: linear-gradient(-110deg, #ee82ee, #ff0000); */
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+/* // outer-container for background image */
+/* #root {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 1) 90%);
+    background-attachment: fixed;
+    margin:0;
+    height: 100vh; 
+} */
+
+#app {
+    animation: fadein ease-out 1.4s;
+}
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}
+
+/* .slick-slide + .slick-slide{
+margin-left: 32px;
+} */
+
+.active{
+  font-size: 20px;
+  font-weight: 500;
+  color: red;
+  position: relative;
+  transition: 250ms;
+}
+
+
+
+.nav-link + .nav-link {
+  margin-left: 30px;
+}
+
+.active::before {
+  content: ''; /* Выводим пустое содержимое */
+    position: absolute; /* Абсолютное позиционирование */
+    background: red; /* Цвет линии */
+    left: 0; /* Положение линии слева */
+    bottom: -5px; /* Положение линии */
+    width: 100%; /* Линия на ширину текста */
+    height: 2px;
+}
+.link-additional{
+  transition: all 250ms;
+  text-decoration: underline;
+}
+
+.link-additional:hover, .link-additional:focus  {
+  color: red;
+  text-decoration: underline;
+}
+
+
+
+/* pagination */
+
+.root {
+  
+  
+  display: flex;
+  align-items: center;
+}
+
+.root li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 250ms;
+  width: 15px;
+  height: 15px;
+}
+.root li:not(:first-child) {
+  margin-left: 16px;
+}
+.root li a {
+  font-size: 12px;
+}
+
+
+.root .previous, .root .next  {
+background-color: red;
+border: none;
+}
+
+
+
+.activePage{
+  border: none;
+  background-color:  rgb(0, 0, 255);
+}
+
+.delete {
+  display: none;
+  
+}
+.cont__scroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+.cont__scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+  border-radius: 10px;
+}
+
+.cont__scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #00c6fb, #005bea);
+}
+
+
