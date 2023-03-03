@@ -1,7 +1,8 @@
 import axios from "axios";
 import Box from "components/Box/Box";
 import { BackgroundContext } from "context/context";
-import { useContext, useEffect, useState } from "react";
+import { debounce } from "debounce";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollFetch from "../ScrollFetch/ScrollFetch";
 
@@ -9,12 +10,12 @@ import { Input, Form, Button } from "./SearchInput.styled";
 
 
 
-const SearchInput = ({handleSubmitInput, handleInput}) => {
+const SearchInput = ({handleSubmitInput}) => {
     const [search, setSearch] = useState('')
+    const [query, setQuery] = useState('')
     const [movies, setMovies] = useState([])
     const {setMoviesSearch} = useContext(BackgroundContext)
     const navigate = useNavigate()
-    
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -25,9 +26,13 @@ const SearchInput = ({handleSubmitInput, handleInput}) => {
   }
 
   
-
+    const searchFetch = useMemo(() => {
+        return debounce((query) => {
+            setQuery(query)
+        }, 500)
+    }, [])
     const handleChange = (e) => {
-        handleInput(e.target.value)
+        searchFetch(e.target.value)
         setSearch(e.target.value)
     }
     
@@ -39,7 +44,7 @@ const SearchInput = ({handleSubmitInput, handleInput}) => {
         try {
             
             const fetchSearch = async () => {
-                    const {data} = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=102d4305e0abdbf0fd48836d5abb1978&language=en-US&page=1&include_adult=false&query=${search}`)
+                    const {data} = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=102d4305e0abdbf0fd48836d5abb1978&language=en-US&page=1&include_adult=false&query=${query}`)
                     setMovies(data.results)
                     setMoviesSearch(data.results)
                 
@@ -48,7 +53,7 @@ const SearchInput = ({handleSubmitInput, handleInput}) => {
         } catch (error) {
             
         }
-    }, [search, setMoviesSearch])
+    }, [query, setMoviesSearch])
     
     
     // слздай backdrop на 100 процентов цирины и сделай как в модалке //

@@ -16,6 +16,7 @@ function raitingFilm(num){
         return 'green'
     }
     }
+    
 const PopularItem = ({popularList}) => {
     
     if(popularList === undefined) {

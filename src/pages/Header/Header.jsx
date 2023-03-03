@@ -6,13 +6,10 @@ import { HeadCont } from "./Header.styled";
 import SearchInput from "./SearchInput/SearchInput";
 
 const Header = ({handleSubmitInput, movies }) => {
-    const handleInput = (data) => {
-        
-    }
+    
     // здесь будет debounce //////////////////////////
     
-            
-            
+    
    
     
     return (
@@ -20,7 +17,7 @@ const Header = ({handleSubmitInput, movies }) => {
         <HeadCont>
         <Box display='flex' justifyContent='space-between' className="container" style={{ display: 'flex', alignItems: 'center'}}>
             <Navigation/>
-            <SearchInput movies={movies} handleInput={handleInput} handleSubmitInput={handleSubmitInput}/>
+            <SearchInput movies={movies}  handleSubmitInput={handleSubmitInput}/>
             
         </Box>
         </HeadCont>
