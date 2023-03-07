@@ -2,11 +2,14 @@ import axios from "axios";
 import Box from "components/Box/Box";
 import { Backdrop, Container, HeaderNav } from "components/Layout/Layout.styled";
 import { BackgroundContext } from "context/context";
-import { BsArrowDown } from 'react-icons/bs';
+import { BsArrowDown} from 'react-icons/bs';
+import {  FaPlay } from 'react-icons/fa';
 import { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 
-import { ContDescription, ContScore,  CountryList,  GenresList, Img, Overview, Tagline, Title } from "./MoviesDetails.styled";
+import { BtnTrailer, ContDescription, ContScore,  CountryList,  GenresList, Img, Overview, Tagline, Title } from "./MoviesDetails.styled";
+import Modal from "components/Modal/Modal";
+import Trailer from "pages/Trailer/Trailer";
 
 function raitingFilm(num){
     
@@ -22,12 +25,16 @@ function raitingFilm(num){
     }
 
     
-
+    const style = { width: "64px", fontSize: "1.5em" }
 export const MoviesDetails = ({handleToggle}) => {
     const [movieDetails, setMovieDetails] = useState([])
     const {moviesId} = useParams()
     const {background,setBackground} = useContext(BackgroundContext)
-    
+    const [isActive, setIsActive] = useState(false)
+
+    const handleToggleModal = () => {
+        setIsActive(pS => !pS)
+    }
 
     useEffect(() => {
         
@@ -105,6 +112,12 @@ export const MoviesDetails = ({handleToggle}) => {
                                 <div>
                                 <p style={{fontWeight: 500, color: 'white'}}>User Score</p>
                                 </div>
+                                <Box ml={128}>
+                                    <BtnTrailer onClick={handleToggleModal} type="button">
+                                    <FaPlay style={style}/>
+                                        
+                                    </BtnTrailer>
+                                </Box>
                             
                         </Box>
                     </Box>
@@ -124,6 +137,11 @@ export const MoviesDetails = ({handleToggle}) => {
                 </Backdrop>
         </Container>
             
+        {isActive && 
+        <Modal onClose={handleToggleModal}>
+            <Trailer />
+        </Modal>
+        }
         </>
     )
 }

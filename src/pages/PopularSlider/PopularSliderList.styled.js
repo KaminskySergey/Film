@@ -5,4 +5,5 @@ width: 1000px;
 background-color: #2f00ff;
 border-radius: 5px;
 height: 166px;
+z-index: 0;
 `

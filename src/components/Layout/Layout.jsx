@@ -1,14 +1,17 @@
 import axios from "axios";
 import Box from "components/Box/Box";
-import Header from "pages/Header/Header";
-import CategoriesAside from "pages/Home/CategoriesAside";
-import PopularSlider from "pages/PopularSlider/PopularSlider";
-import {  useEffect, useState } from "react";
+// import Header from "pages/Header/Header";
+// import CategoriesAside from "pages/Home/CategoriesAside";
+// import PopularSlider from "pages/PopularSlider/PopularSlider";
+import { lazy, useEffect, useState } from "react";
 import { Aside} from "./Layout.styled";
+
+const Header = lazy(() => import('pages/Header/Header'))
+const CategoriesAside = lazy(() => import('pages/Home/CategoriesAside'))
+const PopularSlider = lazy(() => import('pages/PopularSlider/PopularSlider'))
 
 const Layout = ({children, handleSubmitInput, handleInput, search, movies}) => {
     const [genres, setGenres] = useState([])
-    
     
     useEffect(() => {
         try {
@@ -30,7 +33,7 @@ return (
         
         <main>
         
-        <Box pt={132} pb={30} width={1200} ml='auto' mr='auto' pl={15} pr={15} display='flex' justifyContent='center'>
+        <Box  pt={132} pb={30} width={1200} ml='auto' mr='auto' pl={15} pr={15} display='flex' justifyContent='center'>
         <PopularSlider/>
         </Box>
             <Box width={1200} ml='auto' mr='auto' pb={32} borderRadius={30} display='flex'>

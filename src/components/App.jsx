@@ -1,12 +1,18 @@
-import Genres from "pages/Genres/Genres";
-import Home from "pages/Home/Home";
-import CastList from "pages/MoviesDetails/Cast/CastList";
-import MoviesDetails from "pages/MoviesDetails/MoviesDetails";
-import Search from "pages/SearchFilms/SearchGallery/Search";
-import { Suspense, useState } from "react";
+// import Genres from "pages/Genres/Genres";
+// import Home from "pages/Home/Home";
+// import CastList from "pages/MoviesDetails/Cast/CastList";
+// import MoviesDetails from "pages/MoviesDetails/MoviesDetails";
+// import Search from "pages/SearchFilms/SearchGallery/Search";
+import { lazy, Suspense, useState } from "react";
 import { Routes, Route, useSearchParams } from "react-router-dom";
-import Layout from "./Layout/Layout";
+// import Layout from "./Layout/Layout";
 
+const Genres = lazy(() => import('pages/Genres/Genres'))
+const Home = lazy(() => import('pages/Home/Home'))
+const CastList = lazy(() => import('pages/MoviesDetails/Cast/CastList'))
+const MoviesDetails = lazy(() => import('pages/MoviesDetails/MoviesDetails'))
+const Search = lazy(() => import('pages/SearchFilms/SearchGallery/Search'))
+const Layout = lazy(() => import('./Layout/Layout'))
 
 export const App = () => {
   

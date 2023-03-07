@@ -111,9 +111,31 @@ align-items: center;
 p {
     color: white;
 }
+`
+export const BtnTrailer = styled.button`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 64px;
+height: 50px;
+border-radius: 16px;
+background-color: red;
+transition: all 250ms;
+cursor: pointer;
+&:hover, &:focus {
+    transform: scale(1.1);
+}
 
+svg {
+    fill: black;
+    transition: all 500ms;
+    &:hover, &:focus{
+        fill: gold
+    }
+}
 
 `
+
 export const TitleInfo = styled.h4`
 font-size: 24px;
 text-align: right;
