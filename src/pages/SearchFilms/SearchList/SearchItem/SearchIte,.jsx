@@ -40,7 +40,7 @@ const SearchItem = () => {
                         </Raiting>
                         <Description>
                             <p>{el.original_title}</p>
-                            <p>({el.release_date.substring(0,4)})</p>
+                            <p>({el.release_date?.substring(0,4)})</p>
                         </Description>
                         </Link>
                 </Item>

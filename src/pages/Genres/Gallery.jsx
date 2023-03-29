@@ -10,12 +10,13 @@ import GalleryList from "./GalleryList";
 const Gallery = ({children}) => {
     const [genresList, setGenresList] = useState([])
     const {genresId} = useParams()
+    console.log(genresId, 'erererer')
     const [page, setPage] = useState(1)
     useEffect(() => {
         try {
             const fetchDataGenresList = async () => {
             const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=102d4305e0abdbf0fd48836d5abb1978&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genresId}`)
-            // console.log(data, 'gg');
+            console.log(data, 'gg');
             setGenresList(data)
             }
             fetchDataGenresList()

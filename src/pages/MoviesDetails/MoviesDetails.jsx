@@ -68,7 +68,7 @@ export const MoviesDetails = ({handleToggle}) => {
                 </Box>
                 <Box pt={32} pb={32}>
                     <Box height='100%' display='flex' flexDirection='column' >
-                        <Title>{movieDetails.original_title} <span>({movieDetails.release_date.substring(0,4)})</span></Title>
+                        <Title>{movieDetails.original_title} <span>({movieDetails.release_date?.substring(0,4)})</span></Title>
                         <ContDescription>
                             <p>{movieDetails.release_date}</p>
                             <span>
